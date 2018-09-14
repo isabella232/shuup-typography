@@ -1,0 +1,63 @@
+<style type="text/css">
+    {% macro render_font_face(font) %}
+    @font-face {
+        font-family: '{{- font.name -}}';
+        {% if font.eot -%}src: url('{{ font.eot.url }}');{%- endif %}
+        src: {% for font_source in font.get_font_sources() -%}
+            {{- font_source|safe -}}{%- if loop.last -%};{%- else -%},{%- endif -%}
+        {%- endfor %}
+    }
+    {% endmacro%}
+
+    {#- Render font-face rules -#}
+    {%- if body_font_family %}
+    {{ render_font_face(body_font_family) }}
+    {% endif -%}
+    {%- if header_font_family %}
+    {{ render_font_face(header_font_family) }}
+    {% endif -%}
+
+    {#- Html font size -#}
+    {%- if base_font_size %}
+    html {
+        font-size: {{ base_font_size }} !important;
+    }
+    {% endif -%}
+
+    {#- Body and Global rules -#}
+    {%- if body_font_family %}
+    body {
+        font-family: '{{ body_font_family.name }}';
+    }
+    * {
+        font-family: '{{ body_font_family.name }}';
+    }
+    {% endif -%}
+
+    {#- Headers rules -#}
+    {%- if header_font_family %}
+    h1, h2, h3, h4, h5, h6 {
+        font-family: '{{ header_font_family.name }}';
+    }
+    {% endif -%}
+
+    {#- Custom rules that uses body font -#}
+    {%- if body_font_family and body_font_custom_rules %}
+    {% for rule in body_font_custom_rules %}
+        {{ rule|safe }}{%- if not loop.last -%},{%- endif -%}
+    {% endfor %}
+    {
+        font-family: '{{ body_font_family.name }}' !important;
+    }
+    {% endif -%}
+
+    {#- Custom rules that uses header font -#}
+    {%- if header_font_family and header_font_custom_rules %}
+    {% for rule in header_font_custom_rules %}
+        {{ rule|safe }}{%- if not loop.last -%},{%- endif -%}
+    {% endfor %}
+    {
+        font-family: '{{ header_font_family.name }}' !important;
+    }
+    {% endif -%}
+</style>
