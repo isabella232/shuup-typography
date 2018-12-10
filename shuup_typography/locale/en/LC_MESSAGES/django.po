@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-12 19:48+0000\n"
+"POT-Creation-Date: 2018-12-10 19:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,4 +69,16 @@ msgid "Font Family"
 msgstr ""
 
 msgid "Font Families"
+msgstr ""
+
+msgid "Body font family"
+msgstr ""
+
+msgid "Header font family"
+msgstr ""
+
+msgid "Base font size"
+msgstr ""
+
+msgid "Enter a valid CSS font-size value, e.g: 12px, 1.2em."
 msgstr ""
