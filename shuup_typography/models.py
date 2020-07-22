@@ -15,7 +15,8 @@ from filer.fields.image import FilerFileField
 
 @python_2_unicode_compatible
 class FontFamily(models.Model):
-    shop = models.ForeignKey("shuup.Shop", verbose_name=_("Shop"), related_name="typography_fonts")
+    shop = models.ForeignKey(
+        "shuup.Shop", verbose_name=_("Shop"), related_name="typography_fonts", on_delete=models.CASCADE)
     name = models.CharField(max_length=128, verbose_name=_("name"), help_text=_("Font family name"))
 
     woff = FilerFileField(
